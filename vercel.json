@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "buildCommand": "npm run build --workspace=packages/shared-types && npm run build --workspace=apps/web",
+  "buildCommand": "npm run build --workspace=packages/types && npm run build --workspace=apps/web",
   "outputDirectory": "apps/web/dist/web/browser",
   "installCommand": "npm install",
   "framework": null,
   "functions": {
     "apps/api/api/index.ts": {
-      "runtime": "@vercel/node@3",
       "maxDuration": 30,
       "memory": 512
     }
