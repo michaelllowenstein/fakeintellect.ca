@@ -1,0 +1,95 @@
+version: '3.9'
+
+services:
+  # ── PostgreSQL ─────────────────────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: fi_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB:       fakeintellect
+      POSTGRES_USER:     fakeintellect
+      POSTGRES_PASSWORD: fakeintellect
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U fakeintellect']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # ── Redis (session cache / rate limit store) ───────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: fi_redis
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # ── Fastify API ────────────────────────────────────────────────────────────
+  api:
+    build:
+      context: ../apps/api
+      dockerfile: Dockerfile
+    container_name: fi_api
+    restart: unless-stopped
+    environment:
+      NODE_ENV:       production
+      PORT:           3000
+      DATABASE_URL:   postgresql://fakeintellect:fakeintellect@postgres:5432/fakeintellect
+      ALLOWED_ORIGINS: https://fakeintellect.ca,http://localhost:4200
+    env_file:
+      - ../apps/api/.env
+    ports:
+      - '3000:3000'
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD-SHELL', 'wget -qO- http://localhost:3000/health || exit 1']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Angular SSR / Static (nginx) ───────────────────────────────────────────
+  web:
+    build:
+      context: ../apps/web
+      dockerfile: Dockerfile
+    container_name: fi_web
+    restart: unless-stopped
+    ports:
+      - '4200:80'
+    depends_on:
+      - api
+
+  # ── Nginx reverse proxy ────────────────────────────────────────────────────
+  nginx:
+    image: nginx:alpine
+    container_name: fi_nginx
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - api
+      - web
+
+volumes:
+  postgres_data:
+  redis_data:

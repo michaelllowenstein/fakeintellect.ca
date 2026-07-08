@@ -1,0 +1,58 @@
+<header class="sticky top-0 z-50 transition-all duration-300" [class.scrolled]="isScrolled()">
+    <div class="border-b border-fi-border/50 backdrop-blur-xl" [class.bg-fi-bg/95]="isScrolled()"
+        [class.bg-transparent]="!isScrolled()">
+        <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+
+            <!-- Logo -->
+            <a routerLink="/" class="group flex items-center gap-3">
+                <div class="relative">
+                    <div
+                        class="w-8 h-8 border-2 border-fi-accent rotate-45 group-hover:rotate-0 transition-transform duration-500">
+                    </div>
+                    <div
+                        class="absolute inset-1 bg-fi-accent/20 rotate-45 group-hover:rotate-0 transition-transform duration-500 delay-75">
+                    </div>
+                </div>
+                <span class="font-display text-xl tracking-tight">
+                    <span class="text-fi-text">fake</span><span class="text-fi-accent">intellect</span>
+                </span>
+            </a>
+
+            <!-- Desktop nav -->
+            <div class="hidden md:flex items-center gap-8">
+                @for (link of navLinks; track link.path) {
+                <a [routerLink]="link.path" routerLinkActive="text-fi-accent"
+                    [routerLinkActiveOptions]="{ exact: link.exact }"
+                    class="font-mono text-sm text-fi-muted hover:text-fi-text transition-colors duration-200 tracking-wider uppercase">{{
+                    link.label }}</a>
+                }
+                <a routerLink="/posts"
+                    class="font-mono text-xs tracking-widest uppercase px-4 py-2 border border-fi-accent text-fi-accent hover:bg-fi-accent hover:text-fi-bg transition-all duration-200">Start
+                    Reading</a>
+            </div>
+
+            <!-- Mobile menu toggle -->
+            <button class="md:hidden flex flex-col gap-1.5 w-6 cursor-pointer" (click)="mobileOpen.set(!mobileOpen())"
+                aria-label="Toggle menu">
+                <span class="block h-px bg-fi-text transition-all duration-300" [class.rotate-45]="mobileOpen()"
+                    [class.translate-y-2]="mobileOpen()"></span>
+                <span class="block h-px bg-fi-text transition-all duration-300" [class.opacity-0]="mobileOpen()"></span>
+                <span class="block h-px bg-fi-text transition-all duration-300" [class.-rotate-45]="mobileOpen()"
+                    [class.-translate-y-2]="mobileOpen()"></span>
+            </button>
+        </nav>
+
+        <!-- Mobile menu -->
+        @if (mobileOpen()) {
+        <div class="md:hidden border-t border-fi-border/30 bg-fi-bg/98 backdrop-blur-xl">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4">
+                @for (link of navLinks; track link.path) {
+                <a [routerLink]="link.path" routerLinkActive="text-fi-accent"
+                    class="font-mono text-sm text-fi-muted hover:text-fi-text transition-colors py-1"
+                    (click)="mobileOpen.set(false)">{{ link.label }}</a>
+                }
+            </div>
+        </div>
+        }
+    </div>
+</header>

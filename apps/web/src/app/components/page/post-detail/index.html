@@ -1,0 +1,152 @@
+@if (loading()) {
+<div class="max-w-3xl mx-auto px-6 py-32 flex items-center justify-center">
+    <div class="space-y-4 w-full">
+        @for (w of ['w-3/4','w-1/2','w-full','w-full','w-5/6']; track w) {
+        <div class="h-4 bg-fi-surface rounded animate-pulse" [class]="w"></div>
+        }
+    </div>
+</div>
+}
+
+@if (post(); as p) {
+<!-- Reading progress React island -->
+<app-bridge componentName="ReadingProgress" [props]="{}" />
+
+<!-- Hero -->
+<section class="max-w-3xl mx-auto px-6 pt-16 pb-8">
+    <!-- Tags -->
+    <div class="flex flex-wrap gap-2 mb-6">
+        @for (tag of p.tags; track tag.id) {
+        <a [routerLink]="['/tag', tag.slug]"
+            class="font-mono text-xs px-2 py-0.5 border tracking-widest uppercase hover:opacity-80 transition-opacity"
+            [style.borderColor]="tag.color + '60'" [style.color]="tag.color"
+            [style.backgroundColor]="tag.color + '12'">{{ tag.name }}</a>
+        }
+    </div>
+
+    <!-- Title -->
+    <h1 class="font-display text-4xl md:text-6xl leading-tight text-fi-text mb-4">
+        {{ p.title }}
+    </h1>
+
+    @if (p.subtitle) {
+    <p class="font-body text-xl text-fi-muted italic mb-6">{{ p.subtitle }}</p>
+    }
+
+    <!-- Meta bar -->
+    <div class="flex flex-wrap items-center gap-6 py-6 border-y border-fi-border/20">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 border border-fi-accent/30 bg-fi-accent/10 flex items-center justify-center">
+                <span class="font-mono text-xs text-fi-accent">{{ p.author.displayName.charAt(0) }}</span>
+            </div>
+            <div>
+                <div class="font-mono text-sm text-fi-text">{{ p.author.displayName }}</div>
+                <div class="font-mono text-xs text-fi-muted">@{{ p.author.username }}</div>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4 font-mono text-xs text-fi-muted ml-auto">
+            @if (p.publishedAt) {
+            <span>{{ p.publishedAt | date:'MMMM d, y' }}</span>
+            }
+            <span class="text-fi-border/50">·</span>
+            <span>{{ p.readingTimeMinutes }} min read</span>
+        </div>
+    </div>
+</section>
+
+<!-- Cover image -->
+@if (p.coverImageUrl) {
+<div class="max-w-5xl mx-auto px-6 mb-12">
+    <img [src]="p.coverImageUrl" [alt]="p.coverImageAlt || p.title" class="w-full h-64 md:h-96 object-cover" />
+</div>
+}
+
+<!-- Post body + sidebar layout -->
+<div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-16">
+
+        <!-- Content -->
+        <article>
+            <div class="fi-prose" [innerHTML]="renderedContent()"></div>
+
+            <!-- Post reactions React island -->
+            <div class="mt-12">
+                <app-bridge componentName="PostReactions" [props]="reactionProps()" />
+            </div>
+
+            <!-- Comments React island -->
+            <div class="mt-16">
+                <app-bridge componentName="CommentThread" [props]="{ postSlug: p.slug }" />
+            </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="space-y-8 lg:sticky lg:top-24 lg:self-start">
+            <!-- Author card -->
+            <div class="border border-fi-border/20 p-6 space-y-3">
+                <div class="font-mono text-xs text-fi-muted uppercase tracking-widest">Author</div>
+                <div class="font-display text-lg text-fi-text">{{ p.author.displayName }}</div>
+                @if (p.author.bio) {
+                <p class="font-body text-sm text-fi-muted leading-relaxed">{{ p.author.bio }}</p>
+                }
+                <div class="flex gap-4 pt-2">
+                    @if (p.author.twitterHandle) {
+                    <a [href]="'https://twitter.com/' + p.author.twitterHandle" target="_blank"
+                        class="font-mono text-xs text-fi-muted hover:text-fi-accent transition-colors">@{{
+                        p.author.twitterHandle }}</a>
+                    }
+                </div>
+            </div>
+
+            <!-- Tags -->
+            @if (p.tags.length > 0) {
+            <div class="border border-fi-border/20 p-6 space-y-3">
+                <div class="font-mono text-xs text-fi-muted uppercase tracking-widest">Filed under</div>
+                <div class="flex flex-wrap gap-2">
+                    @for (tag of p.tags; track tag.id) {
+                    <a [routerLink]="['/tag', tag.slug]" class="font-mono text-xs px-2 py-0.5 border tracking-wider"
+                        [style.borderColor]="tag.color + '40'" [style.color]="tag.color">{{ tag.name }}</a>
+                    }
+                </div>
+            </div>
+            }
+
+            <!-- Share links -->
+            <div class="border border-fi-border/20 p-6 space-y-3">
+                <div class="font-mono text-xs text-fi-muted uppercase tracking-widest">Share</div>
+                <div class="flex flex-col gap-2">
+                    <a [href]="'https://twitter.com/intent/tweet?text=' + encodeTitle(p.title) + '&url=' + currentUrl()"
+                        target="_blank" class="font-mono text-xs text-fi-muted hover:text-fi-accent transition-colors">→
+                        Share on X</a>
+                    <button (click)="copyLink()"
+                        class="font-mono text-xs text-fi-muted hover:text-fi-accent transition-colors text-left">{{
+                        copied() ? '✓ Copied!' : '→ Copy link' }}</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<!-- Related posts -->
+@if (relatedPosts().length > 0) {
+<section class="max-w-7xl mx-auto px-6 py-20 border-t border-fi-border/20 mt-16">
+    <div class="font-mono text-xs text-fi-accent uppercase tracking-widest mb-8">More to read</div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        @for (rp of relatedPosts(); track rp.id) {
+        <app-postcard [post]="rp" />
+        }
+    </div>
+</section>
+}
+}
+
+@if (notFound()) {
+<div class="max-w-3xl mx-auto px-6 py-32 text-center space-y-6">
+    <div class="font-mono text-6xl text-fi-border/30">404</div>
+    <h1 class="font-display text-3xl text-fi-text">This post doesn't exist.</h1>
+    <p class="font-body text-fi-muted">Either it was never written or we deleted our own opinions, which happens.</p>
+    <a routerLink="/posts" class="inline-block mt-4 font-mono text-sm text-fi-accent hover:underline">← Back to all
+        writing</a>
+</div>
+}

@@ -1,0 +1,55 @@
+<footer class="border-t border-fi-border/30 mt-24">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+            <!-- Brand -->
+            <div class="space-y-4">
+                <div class="font-display text-lg">
+                    <span class="text-fi-text">fake</span><span class="text-fi-accent">intellect</span>
+                </div>
+                <p class="font-body text-sm text-fi-muted leading-relaxed">
+                    A blog for the confidently uncertain.<br>
+                    Hosted at <span class="text-fi-accent font-mono text-xs">fakeintellect.ca</span>
+                </p>
+            </div>
+
+            <!-- Links -->
+            <div class="space-y-4">
+                <div class="font-mono text-xs text-fi-muted uppercase tracking-widest">Navigate</div>
+                <div class="flex flex-col gap-2">
+                    @for (link of footerLinks; track link.path) {
+                    <a [routerLink]="link.path"
+                        class="font-body text-sm text-fi-muted hover:text-fi-text transition-colors w-fit">
+                        {{ link.label }}
+                    </a>
+                    }
+                </div>
+            </div>
+
+            <!-- Newsletter inline -->
+            <div class="space-y-4">
+                <div class="font-mono text-xs text-fi-muted uppercase tracking-widest">Stay Wrong Together</div>
+                <p class="font-body text-sm text-fi-muted">Subscribe for new essays, delivered with no particular
+                    frequency.</p>
+                <div class="flex gap-2">
+                    <input type="email" placeholder="you@example.com"
+                        class="flex-1 bg-transparent border border-fi-border/50 px-3 py-2 text-sm font-mono text-fi-text placeholder:text-fi-muted/50 focus:outline-none focus:border-fi-accent transition-colors" />
+                    <button
+                        class="px-4 py-2 bg-fi-accent text-fi-bg text-xs font-mono uppercase tracking-widest hover:opacity-80 transition-opacity">
+                        Sub
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="mt-16 pt-8 border-t border-fi-border/20 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="font-mono text-xs text-fi-muted">
+                © {{ currentYear }} fakeintellect.ca — written by humans, questioned by all
+            </p>
+            <p class="font-mono text-xs text-fi-muted/50">
+                Angular 20 · Fastify · PostgreSQL · Firebase
+            </p>
+        </div>
+    </div>
+</footer>

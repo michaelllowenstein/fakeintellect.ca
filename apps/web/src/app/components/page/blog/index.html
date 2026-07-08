@@ -1,0 +1,70 @@
+<div class="max-w-7xl mx-auto px-6 py-16">
+
+    <!-- Page header -->
+    <div class="flex items-end justify-between mb-12 pb-8 border-b border-fi-border/20">
+        <div>
+            <div class="font-mono text-xs text-fi-accent uppercase tracking-widest mb-3">
+                {{ activeTag() ? 'Category' : 'Archive' }}
+            </div>
+            <h1 class="font-display text-5xl text-fi-text">
+                {{ activeTag() ? '#' + activeTag() : 'All Writing' }}
+            </h1>
+            <p class="font-body text-fi-muted mt-2">
+                {{ result()?.pagination?.total ?? 0 }} essays · sorted by date
+            </p>
+        </div>
+
+        <!-- Search input -->
+        <div
+            class="hidden md:flex items-center gap-2 border border-fi-border/30 px-4 py-2 focus-within:border-fi-accent/50 transition-colors">
+            <svg class="w-4 h-4 text-fi-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange($event)" placeholder="Search essays..."
+                class="bg-transparent font-mono text-sm text-fi-text placeholder:text-fi-muted/40 outline-none w-48" />
+        </div>
+    </div>
+
+    <!-- Grid -->
+    @if (loading()) {
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @for (n of [1,2,3,4,5,6]; track n) {
+        <div class="border border-fi-border/10 p-6 space-y-3 animate-pulse">
+            <div class="h-3 w-16 bg-fi-surface/60 rounded"></div>
+            <div class="h-5 w-3/4 bg-fi-surface/60 rounded"></div>
+            <div class="h-4 w-full bg-fi-surface/40 rounded"></div>
+            <div class="h-4 w-2/3 bg-fi-surface/40 rounded"></div>
+        </div>
+        }
+    </div>
+    } @else if (posts().length > 0) {
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @for (post of posts(); track post.id; let i = $index) {
+        <app-postcard [post]="post" [featured]="i === 0 && page() === 1 && !searchQuery" />
+        }
+    </div>
+
+    <!-- Pagination -->
+    {{ total() }} essays · sorted by date
+
+        <!-- Was: @if (result()?.pagination.totalPages > 1) -->
+        @if (pagination()?.totalPages ?? 0 > 1) {
+
+            <!-- Was: [disabled]="!result()?.pagination.hasPrev" -->
+            <button [disabled]="!pagination()?.hasPrev" (click)="goToPage(page() - 1)">← Prev</button>
+
+            <!-- Was: {{ page() }} / {{ result()?.pagination.totalPages }} -->
+            {{ page() }} / {{ pagination()?.totalPages }}
+
+            <!-- Was: [disabled]="!result()?.pagination.hasNext" -->
+            <button [disabled]="!pagination()?.hasNext" (click)="goToPage(page() + 1)">Next →</button>
+        }
+    } @else {
+    <div class="py-24 text-center space-y-4">
+        <div class="font-mono text-4xl text-fi-border/20">∅</div>
+        <p class="font-body text-fi-muted">No essays found. Try a different search.</p>
+        <button (click)="clearSearch()" class="font-mono text-sm text-fi-accent hover:underline">Clear search</button>
+    </div>
+    }
+</div>

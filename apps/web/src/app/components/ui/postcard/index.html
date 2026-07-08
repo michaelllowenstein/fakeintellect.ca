@@ -1,0 +1,60 @@
+<article
+    class="group relative border border-fi-border/30 hover:border-fi-accent/50 transition-all duration-300 bg-fi-surface/30 hover:bg-fi-surface/60"
+    [class.featured-card]="featured">
+    <!-- Accent line on hover -->
+    <div class="absolute top-0 left-0 w-0 h-px bg-fi-accent group-hover:w-full transition-all duration-500"></div>
+
+    @if (post.coverImageUrl) {
+    <div class="overflow-hidden" [class.h-52]="!featured" [class.h-72]="featured">
+        <img [src]="post.coverImageUrl" [alt]="post.coverImageAlt || post.title"
+            class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+    </div>
+    }
+
+    <div class="p-6 space-y-4">
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2">
+            @for (tag of post.tags.slice(0, 2); track tag.id) {
+            <span class="font-mono text-xs px-2 py-0.5 border tracking-widest uppercase"
+                [style.borderColor]="tag.color + '60'" [style.color]="tag.color"
+                [style.backgroundColor]="tag.color + '15'">{{ tag.name }}</span>
+            }
+        </div>
+
+        <!-- Title -->
+        <div>
+            <a [routerLink]="['/posts', post.slug]">
+                <h2 class="font-display leading-tight text-fi-text group-hover:text-fi-accent transition-colors duration-200 cursor-pointer"
+                    [class.text-2xl]="featured" [class.text-lg]="!featured">{{ post.title }}</h2>
+            </a>
+            @if (post.subtitle) {
+            <p class="font-body text-sm text-fi-muted mt-1 italic">{{ post.subtitle }}</p>
+            }
+        </div>
+
+        <!-- Excerpt -->
+        <p class="font-body text-sm text-fi-muted leading-relaxed line-clamp-3">
+            {{ post.excerpt }}
+        </p>
+
+        <!-- Meta footer -->
+        <div class="flex items-center justify-between pt-2 border-t border-fi-border/20">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-6 h-6 rounded-full bg-fi-accent/20 border border-fi-accent/30 flex items-center justify-center">
+                    <span class="font-mono text-xs text-fi-accent">
+                        {{ post.author.displayName.charAt(0) }}
+                    </span>
+                </div>
+                <span class="font-mono text-xs text-fi-muted">{{ post.author.displayName }}</span>
+            </div>
+
+            <div class="flex items-center gap-4 font-mono text-xs text-fi-muted/60">
+                <span>{{ post.readingTimeMinutes }}m</span>
+                @if (post.publishedAt) {
+                <span>{{ post.publishedAt | date:'MMM d, y' }}</span>
+                }
+            </div>
+        </div>
+    </div>
+</article>
