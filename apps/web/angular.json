@@ -41,6 +41,7 @@
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
+            "allowedCommonJsDependencies": ["react", "react-dom"],
             "inlineStyleLanguage": "scss",
             "assets": [
               {
