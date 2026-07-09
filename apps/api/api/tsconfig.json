@@ -1,11 +1,16 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
+    "target": "ES2020",
     "module": "CommonJS",
+    "lib": ["ES2020"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "rootDir": "../../..",
     "outDir": "../dist/api",
-    "rootDir": "../../../",
     "paths": {
-      "@fakeintellect/shared-types": ["../../../packages/types/src/index.ts"]
+      "@fakeintellect/types": ["../../../packages/types/src/index.ts"]
     }
   },
   "include": [
