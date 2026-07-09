@@ -5,7 +5,8 @@
 
 -- ── Extensions ───────────────────────────────────────────────────
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-CREATE EXTENSION IF NOT EXISTS "pg_trgm";   -- fast ILIKE / full-text search
+CREATE EXTENSION IF NOT EXISTS "pg_trgm"; 
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
 -- ── Authors ──────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS authors (
