@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "npm run build --workspace=packages/types && npm run build --workspace=apps/web",
-  "outputDirectory": "apps/web/dist/@fakeintellect/web",
+  "buildCommand": "npm run build --workspace=packages/types && npm run build --workspace=client",
+  "outputDirectory": "client/dist/@fakeintellect/client",
   "installCommand": "npm install",
   "framework": null,
   "rewrites": [
