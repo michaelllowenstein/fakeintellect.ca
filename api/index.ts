@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { buildApp } from '../apps/api/src/app';
+import { buildApp } from '../server/src/app';
 import type { FastifyInstance } from 'fastify';
 
 let app: FastifyInstance | null = null;

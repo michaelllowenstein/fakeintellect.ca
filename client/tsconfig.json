@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": "../../",
+    "rootDir": "../",
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
@@ -25,7 +25,7 @@
     "jsxFragmentFactory": "React.Fragment",
     "types": ["node"],
     "paths": {
-      "@fakeintellect/types": ["../../packages/types/src/index.ts"]
+      "@fakeintellect/types": ["../packages/types/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

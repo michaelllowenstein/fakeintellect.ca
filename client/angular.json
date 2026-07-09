@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "@fakeintellect/web": {
+    "@fakeintellect/client": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -81,10 +81,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "@fakeintellect/web:build:production"
+              "buildTarget": "@fakeintellect/client:build:production"
             },
             "development": {
-              "buildTarget": "@fakeintellect/web:build:development"
+              "buildTarget": "@fakeintellect/client:build:development"
             }
           },
           "defaultConfiguration": "development"
