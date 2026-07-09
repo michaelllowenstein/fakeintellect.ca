@@ -1,0 +1,355 @@
+{
+  "post_stats": {
+    "eleven-years-with-angular-a-complicated-love-story": {
+      "viewCount": 0,
+      "likeCount": 0,
+      "commentCount": 2,
+      "activeReaders": 0,
+      "lastSyncedAt": 0
+    },
+    "why-i-stopped-picking-one-framework-and-started-using-all-of-them": {
+      "viewCount": 0,
+      "likeCount": 0,
+      "commentCount": 2,
+      "activeReaders": 0,
+      "lastSyncedAt": 0
+    },
+    "in-defence-of-vue-the-framework-nobody-argues-about": {
+      "viewCount": 0,
+      "likeCount": 0,
+      "commentCount": 0,
+      "activeReaders": 0,
+      "lastSyncedAt": 0
+    },
+    "raw-sql-is-not-a-character-flaw": {
+      "viewCount": 0,
+      "likeCount": 0,
+      "commentCount": 2,
+      "activeReaders": 0,
+      "lastSyncedAt": 0
+    },
+    "python-on-the-backend-when-it-earns-it": {
+      "viewCount": 0,
+      "likeCount": 0,
+      "commentCount": 0,
+      "activeReaders": 0,
+      "lastSyncedAt": 0
+    },
+    "dotnet-core-the-enterprise-workhorse-that-became-something-more": {
+      "viewCount": 0,
+      "likeCount": 0,
+      "commentCount": 0,
+      "activeReaders": 0,
+      "lastSyncedAt": 0
+    },
+    "nestjs-typescript-all-the-way-down": {
+      "viewCount": 0,
+      "likeCount": 0,
+      "commentCount": 0,
+      "activeReaders": 0,
+      "lastSyncedAt": 0
+    },
+    "nosql-the-cases-where-i-actually-reach-for-it": {
+      "viewCount": 0,
+      "likeCount": 0,
+      "commentCount": 1,
+      "activeReaders": 0,
+      "lastSyncedAt": 0
+    },
+    "integrating-ai-into-existing-software-without-rewriting-everything": {
+      "viewCount": 0,
+      "likeCount": 0,
+      "commentCount": 2,
+      "activeReaders": 0,
+      "lastSyncedAt": 0
+    },
+    "the-questions-ai-forces-us-to-ask-that-we-are-not-asking": {
+      "viewCount": 0,
+      "likeCount": 0,
+      "commentCount": 3,
+      "activeReaders": 0,
+      "lastSyncedAt": 0
+    }
+  },
+  "active_readers": {},
+  "tags": [
+    { "name": "Philosophy",  "slug": "philosophy",  "color": "#8b5cf6", "description": "Thinking about thinking" },
+    { "name": "Technology",  "slug": "technology",  "color": "#06b6d4", "description": "The machines are learning" },
+    { "name": "Culture",     "slug": "culture",     "color": "#f59e0b", "description": "What we are becoming" },
+    { "name": "Science",     "slug": "science",     "color": "#10b981", "description": "Evidence-based wandering" },
+    { "name": "Opinion",     "slug": "opinion",     "color": "#ef4444", "description": "Wrong, but confidently" },
+    { "name": "Satire",      "slug": "satire",      "color": "#f97316", "description": "Funny because it is true" },
+    { "name": "Engineering", "slug": "engineering", "color": "#3b82f6", "description": "The practice of building things that work" },
+    { "name": "Frontend",    "slug": "frontend",    "color": "#f59e0b", "description": "What users actually see and touch" },
+    { "name": "Backend",     "slug": "backend",     "color": "#10b981", "description": "The part nobody notices until it breaks" },
+    { "name": "Databases",   "slug": "databases",   "color": "#8b5cf6", "description": "Where the truth lives" },
+    { "name": "AI Ethics",   "slug": "ai-ethics",   "color": "#ef4444", "description": "The questions we are not asking loudly enough" }
+  ],
+
+  "posts": [
+    {
+      "slug": "eleven-years-with-angular-a-complicated-love-story",
+      "title": "Eleven Years With Angular: A Complicated Love Story",
+      "subtitle": "It is not the framework you want. It is the framework you deserve.",
+      "excerpt": "I have been writing Angular since before it was Angular. Back when it was AngularJS, back when two-way data binding felt like magic and $scope felt like God. A lot has changed. My feelings have not simplified.",
+      "readingTimeMinutes": 9,
+      "isFeatured": true,
+      "isPinned": false,
+      "status": "published",
+      "tags": ["engineering", "frontend", "opinion"],
+      "daysAgo": 58
+    },
+    {
+      "slug": "why-i-stopped-picking-one-framework-and-started-using-all-of-them",
+      "title": "Why I Stopped Picking One Framework and Started Using All of Them",
+      "subtitle": "The architecture nobody tells you about because it feels like cheating.",
+      "excerpt": "The question I kept getting asked in code reviews and architecture meetings was always a version of the same thing: Angular or React? As if the answer was binary. As if the frameworks were religions and picking one meant rejecting the other.",
+      "readingTimeMinutes": 10,
+      "isFeatured": true,
+      "isPinned": false,
+      "status": "published",
+      "tags": ["engineering", "frontend", "technology"],
+      "daysAgo": 51
+    },
+    {
+      "slug": "in-defence-of-vue-the-framework-nobody-argues-about",
+      "title": "In Defence of Vue: The Framework Nobody Argues About",
+      "subtitle": "Which should tell you something.",
+      "excerpt": "Nobody has a strong opinion about Vue. I mean that as a compliment. In a space where React and Angular developers approach framework discussions with the energy of people defending ancestral homelands, Vue exists as the Switzerland of frontend.",
+      "readingTimeMinutes": 7,
+      "isFeatured": false,
+      "isPinned": false,
+      "status": "published",
+      "tags": ["frontend", "engineering", "opinion"],
+      "daysAgo": 44
+    },
+    {
+      "slug": "raw-sql-is-not-a-character-flaw",
+      "title": "Raw SQL Is Not a Character Flaw",
+      "subtitle": "A defence of writing the queries yourself.",
+      "excerpt": "I do not use ORMs for new projects. This is the kind of statement that triggers a reaction in people, and the reaction is almost always the same: a furrowed brow, a slight lean forward, and \"what do you do about migrations?\"",
+      "readingTimeMinutes": 8,
+      "isFeatured": false,
+      "isPinned": false,
+      "status": "published",
+      "tags": ["backend", "databases", "engineering"],
+      "daysAgo": 37
+    },
+    {
+      "slug": "python-on-the-backend-when-it-earns-it",
+      "title": "Python on the Backend: When It Actually Earns Its Place",
+      "subtitle": "Not every API should be a FastAPI. But some should.",
+      "excerpt": "Python is not my primary backend language. My primary backend environment is TypeScript. Python enters the picture under specific conditions, and when those conditions are met, it earns its place clearly enough that I do not feel the need to apologize for using it.",
+      "readingTimeMinutes": 8,
+      "isFeatured": false,
+      "isPinned": false,
+      "status": "published",
+      "tags": ["backend", "engineering", "technology"],
+      "daysAgo": 30
+    },
+    {
+      "slug": "dotnet-core-the-enterprise-workhorse-that-became-something-more",
+      "title": ".NET Core: The Enterprise Workhorse That Became Something More",
+      "subtitle": "What happens when Microsoft actually listens.",
+      "excerpt": "My relationship with .NET is the most improved relationship in my professional life. That is a low bar to set if you remember what .NET was like in 2008. But credit belongs where it is due.",
+      "readingTimeMinutes": 8,
+      "isFeatured": false,
+      "isPinned": false,
+      "status": "published",
+      "tags": ["backend", "engineering", "technology"],
+      "daysAgo": 24
+    },
+    {
+      "slug": "nestjs-typescript-all-the-way-down",
+      "title": "NestJS: TypeScript All the Way Down",
+      "subtitle": "When you want Angular's architecture on the server.",
+      "excerpt": "NestJS is what happens when Angular developers get tired of context-switching to the backend. I say this as someone who contributed to that tired feeling and who now thinks the resulting framework is one of the more interesting things to happen to Node.js backend development in recent years.",
+      "readingTimeMinutes": 7,
+      "isFeatured": false,
+      "isPinned": false,
+      "status": "published",
+      "tags": ["backend", "engineering", "technology"],
+      "daysAgo": 18
+    },
+    {
+      "slug": "nosql-the-cases-where-i-actually-reach-for-it",
+      "title": "NoSQL: The Cases Where I Actually Reach for It",
+      "subtitle": "Not as a default. As a deliberate choice for specific problems.",
+      "excerpt": "I am a relational database person. PostgreSQL is my default answer to 'what database should we use' because it is correct most of the time. But there are several contexts where NoSQL is not just acceptable but genuinely better than the relational alternative.",
+      "readingTimeMinutes": 7,
+      "isFeatured": false,
+      "isPinned": false,
+      "status": "published",
+      "tags": ["databases", "engineering", "backend"],
+      "daysAgo": 14
+    },
+    {
+      "slug": "integrating-ai-into-existing-software-without-rewriting-everything",
+      "title": "Integrating AI Into Existing Software Without Rewriting Everything",
+      "subtitle": "The unglamorous, practical version of what AI in production actually looks like.",
+      "excerpt": "Most AI integration content describes greenfield systems built from scratch with AI as a first-class concern. This is useful for maybe five percent of engineers working today. The rest are looking at existing codebases asking a harder question: how do we add AI to what we already have?",
+      "readingTimeMinutes": 9,
+      "isFeatured": true,
+      "isPinned": false,
+      "status": "published",
+      "tags": ["technology", "engineering", "backend"],
+      "daysAgo": 8
+    },
+    {
+      "slug": "the-questions-ai-forces-us-to-ask-that-we-are-not-asking",
+      "title": "The Questions AI Forces Us to Ask That We Are Not Asking",
+      "subtitle": "I am going to be blunt about this because I think the softness is the problem.",
+      "excerpt": "There is a version of the AI ethics conversation that happens where it is supposed to happen — policy papers, academic conferences, responsible AI frameworks — and it is not moving fast enough, not by a significant margin.",
+      "readingTimeMinutes": 11,
+      "isFeatured": true,
+      "isPinned": true,
+      "status": "published",
+      "tags": ["ai-ethics", "technology", "opinion"],
+      "daysAgo": 3
+    }
+  ],
+
+  "comments": [
+    {
+      "postSlug": "eleven-years-with-angular-a-complicated-love-story",
+      "authorName": "Jordan K.",
+      "authorEmail": "jordan@example.com",
+      "content": "The point about transferred decision-making in React teams is exactly right. I have watched three different teams at my company make three completely different architectural decisions for basically identical problems. Nobody is wrong per se, but the inconsistency has a cost that compounds.",
+      "isApproved": true,
+      "replies": [
+        {
+          "authorName": "Sam R.",
+          "authorEmail": "sam@example.com",
+          "content": "This is what I keep trying to explain to people who say Angular is 'too opinionated.' The opinions are the product. You are not fighting the framework, you are reading the documentation.",
+          "isApproved": true
+        }
+      ]
+    },
+    {
+      "postSlug": "eleven-years-with-angular-a-complicated-love-story",
+      "authorName": "Dev T.",
+      "authorEmail": "dev@example.com",
+      "content": "Coming from a Vue background and recently picking up Angular for a new role — the learning curve comment is accurate. Rough first two weeks. Third week something clicked and now I get why the structure is the way it is.",
+      "isApproved": true,
+      "replies": []
+    },
+    {
+      "postSlug": "why-i-stopped-picking-one-framework-and-started-using-all-of-them",
+      "authorName": "Alex M.",
+      "authorEmail": "alex@example.com",
+      "content": "The zone.js isolation point is critical and I wish more people talked about it. We had a nasty bug last year where React state updates were triggering Angular change detection cycles and the debugging was genuinely painful.",
+      "isApproved": true,
+      "replies": [
+        {
+          "authorName": "Chris P.",
+          "authorEmail": "chris@example.com",
+          "content": "We hit the same thing. runOutsideAngular is now a first-class part of our island mounting template. Non-negotiable.",
+          "isApproved": true
+        }
+      ]
+    },
+    {
+      "postSlug": "raw-sql-is-not-a-character-flaw",
+      "authorName": "Mo D.",
+      "authorEmail": "mo@example.com",
+      "content": "The N+1 query point is where I lost faith in ORMs permanently. Watched a TypeORM-backed endpoint go from 12ms to 1400ms between dev and production because the query count scaled with result size and nobody noticed until load testing.",
+      "isApproved": true,
+      "replies": [
+        {
+          "authorName": "Priya S.",
+          "authorEmail": "priya@example.com",
+          "content": "Prisma has query logging that surfaces this but most teams have it off by default. By the time they turn it on there are already fifty endpoints to audit.",
+          "isApproved": true
+        }
+      ]
+    },
+    {
+      "postSlug": "raw-sql-is-not-a-character-flaw",
+      "authorName": "Lee W.",
+      "authorEmail": "lee@example.com",
+      "content": "I use SQLAlchemy Core for exactly the reasons described here. Best of both worlds — the Pythonic query composition without the magic. The moment I start using the ORM layer I always regret it six months later.",
+      "isApproved": true,
+      "replies": []
+    },
+    {
+      "postSlug": "nosql-the-cases-where-i-actually-reach-for-it",
+      "authorName": "Taylor B.",
+      "authorEmail": "taylor@example.com",
+      "content": "The Firebase presence tracking pattern with onDisconnect is one of those things that looks like magic the first time you see it. Implementing the same thing with WebSockets and a PostgreSQL sessions table took us three weeks and we still had edge cases.",
+      "isApproved": true,
+      "replies": []
+    },
+    {
+      "postSlug": "integrating-ai-into-existing-software-without-rewriting-everything",
+      "authorName": "Robin C.",
+      "authorEmail": "robin@example.com",
+      "content": "The mock mode point cannot be overstated. Every team I have seen skip this ends up with flaky tests, unpredictable CI costs, and developers who avoid touching the AI-integrated code paths because they are afraid of accidentally burning API credits.",
+      "isApproved": true,
+      "replies": [
+        {
+          "authorName": "Pat H.",
+          "authorEmail": "pat@example.com",
+          "content": "We treat LLM calls exactly like we treat payment gateway calls. Mock in dev, test with real providers in a dedicated integration test suite only, never in unit tests.",
+          "isApproved": true
+        }
+      ]
+    },
+    {
+      "postSlug": "the-questions-ai-forces-us-to-ask-that-we-are-not-asking",
+      "authorName": "Sam O.",
+      "authorEmail": "samo@example.com",
+      "content": "The accountability gap section is the part of this conversation I find most frustrating. We have clear frameworks for product liability in physical goods. A manufacturer cannot disclaim their way out of responsibility for a defective product. Why is software different, and why are we so comfortable with that difference?",
+      "isApproved": true,
+      "replies": [
+        {
+          "authorName": "Kai N.",
+          "authorEmail": "kai@example.com",
+          "content": "Because software liability would immediately expose how much of what we ship is genuinely not fit for the purpose it is being used for. The industry has a strong economic interest in keeping the legal framework vague.",
+          "isApproved": true
+        },
+        {
+          "authorName": "Morgan L.",
+          "authorEmail": "morgan@example.com",
+          "content": "The EU AI Act at least creates some teeth here for high-risk applications. Not enough, but something.",
+          "isApproved": true
+        }
+      ]
+    },
+    {
+      "postSlug": "the-questions-ai-forces-us-to-ask-that-we-are-not-asking",
+      "authorName": "Casey F.",
+      "authorEmail": "casey@example.com",
+      "content": "The Nuremberg reference will get people's backs up but I think you are right to make it. The 'I just built what I was asked to build' framing has a long and uncomfortable history and we should be wary of reaching for it.",
+      "isApproved": true,
+      "replies": []
+    },
+    {
+      "postSlug": "the-questions-ai-forces-us-to-ask-that-we-are-not-asking",
+      "authorName": "Dana R.",
+      "authorEmail": "dana@example.com",
+      "content": "Pending moderation — curious about the consent argument specifically. Do you think there is a workable opt-out framework that could be applied retroactively to existing models, or is that ship sailed?",
+      "isApproved": false
+    }
+  ],
+
+  "author": {
+    "username": "ghost",
+    "displayName": "The Ghost Writer",
+    "email": "ghost@fakeintellect.ca",
+    "bio": "Professionally ambiguous. Occasionally right. Always opinionated.",
+    "isAdmin": true
+  },
+
+  "_meta": {
+    "totalPosts": 10,
+    "totalTags": 11,
+    "totalComments": 10,
+    "totalReplies": 6,
+    "pendingModeration": 1,
+    "featured": 4,
+    "pinned": 1,
+    "generatedAt": "2026-07-08T00:00:00Z",
+    "database": "neon-postgresql",
+    "note": "Full post content (markdown) lives in the import-content.ts script. This file contains metadata, excerpts, and relational structure only. Firebase RTDB stores post_stats only — see firebase-seed.json."
+  }
+}

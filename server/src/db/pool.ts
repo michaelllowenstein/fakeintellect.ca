@@ -1,15 +1,6 @@
 import { Pool, PoolClient, QueryResult, QueryResultRow } from 'pg';
-import { logger } from '../utils/logger';
 
-// ── Detect serverless environment ─────────────────────────────────────────────
-// In serverless (Vercel), connection pools must be kept minimal.
-// Neon's PgBouncer (enabled via ?pgbouncer=true in DATABASE_URL) handles
-// external pooling — we just need 1 connection per function instance.
-const isServerless = !!(
-  process.env.VERCEL ||
-  process.env.AWS_LAMBDA_FUNCTION_NAME ||
-  process.env.NETLIFY
-);
+const isServerless = !!(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
 
 let pool: Pool;
 
@@ -21,35 +12,24 @@ export function getPool(): Pool {
 
     pool = new Pool({
       connectionString: process.env.DATABASE_URL,
-      // Serverless: keep max at 1 — Neon PgBouncer handles external pooling
-      // Local dev: use a real pool for concurrent queries
       max: isServerless ? 1 : 20,
       idleTimeoutMillis: isServerless ? 5_000 : 30_000,
       connectionTimeoutMillis: 5_000,
-      // Always use SSL for Neon / cloud databases
-      ssl: process.env.NODE_ENV === 'production'
-        ? { rejectUnauthorized: false }
-        : (process.env.DATABASE_URL?.includes('neon.tech') ? { rejectUnauthorized: false } : false),
+      ssl: { rejectUnauthorized: false },
     });
 
     pool.on('error', (err) => {
-      logger.error({ err }, 'Unexpected error on idle pg client');
+      console.error('Unexpected pg client error', err);
     });
   }
   return pool;
 }
 
-// ── Query helpers ─────────────────────────────────────────────────────────────
-
 export async function query<T extends QueryResultRow = QueryResultRow>(
   text: string,
   params?: unknown[],
 ): Promise<QueryResult<T>> {
-  const start = Date.now();
-  const result = await getPool().query<T>(text, params);
-  const duration = Date.now() - start;
-  logger.debug({ duration, rows: result.rowCount }, 'SQL executed');
-  return result;
+  return getPool().query<T>(text, params);
 }
 
 export async function queryOne<T extends QueryResultRow = QueryResultRow>(
@@ -68,8 +48,6 @@ export async function queryMany<T extends QueryResultRow = QueryResultRow>(
   return result.rows;
 }
 
-// ── Transaction helper ────────────────────────────────────────────────────────
-
 export async function withTransaction<T>(
   fn: (client: PoolClient) => Promise<T>,
 ): Promise<T> {
@@ -87,12 +65,6 @@ export async function withTransaction<T>(
   }
 }
 
-// ── Graceful shutdown ─────────────────────────────────────────────────────────
-// Only relevant in local dev — serverless functions don't persist
-
 export async function closePool(): Promise<void> {
-  if (pool) {
-    await pool.end();
-    logger.info('Database pool closed');
-  }
+  if (pool) await pool.end();
 }
