@@ -5,7 +5,16 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "build:install": "npm install --legacy-peer-deps",
+    "local": "ng serve --configuration local --port 4422",
+    "build:local": "ng build --configuration local",
+    "watch": "ng build --watch --configuration local",
+    "build:prod": "ng build --configuration production",
+    "ngo:service": "node scripts/gen.mjs --service",
+    "ngo:guard": "node scripts/gen.mjs --guard",
+    "ngo:pipe": "node scripts/gen.mjs --pipe",
+    "ngo:comp": "node scripts/gen.mjs",
+    "ngo": "node scripts/gen.mjs",
     "test": "ng test"
   },
   "prettier": {

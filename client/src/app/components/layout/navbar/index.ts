@@ -18,7 +18,7 @@ export class Navbar {
 
   navLinks = [
     { path: '/',       label: 'Home',    exact: true },
-    { path: '/posts',  label: 'Writing', exact: false },
+    { path: '/blog',  label: 'Writing', exact: false },
     { path: '/about',  label: 'About',   exact: true },
   ];
 

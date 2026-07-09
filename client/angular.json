@@ -48,7 +48,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/favicon.ico",
+              "src/assets",
+              "src/sitemap.xml",
+              "src/robots.txt"
             ],
             "styles": [
               "src/styles.scss"
@@ -74,6 +78,12 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "local": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -86,6 +96,13 @@
             },
             "development": {
               "buildTarget": "@fakeintellect/client:build:development"
+            },
+            "local": {
+              "buildTarget": "@fakeintellect/client:build:local",
+              "ssl": true,
+              "sslCert": "cert/local/localhost.crt",
+              "sslKey":  "cert/local/localhost.decrypted.key",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
