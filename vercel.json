@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "buildCommand": "npm run build --workspace=packages/types && npm run build --workspace=client",
-  "outputDirectory": "client/dist/@fakeintellect/client",
-  "installCommand": "npm install",
-  "framework": null,
+  "buildCommand": "npm install && npm run build --workspace=packages/types && cd client && npm run build -- --configuration production",
+  "outputDirectory": "client/dist/client/browser",
   "rewrites": [
-    { "source": "/api/:path*", "destination": "/api" },
-    { "source": "/health", "destination": "/api" },
-    { "source": "/((?!_next|favicon|assets|.*\\..*).*)", "destination": "/index.html" }
-  ]
+    { "source": "/api/(.*)", "destination": "/api/index" }
+  ],
+  "functions": {
+    "api/index.ts": { "maxDuration": 30 }
+  }
 }
