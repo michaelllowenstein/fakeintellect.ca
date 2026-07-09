@@ -1,24 +1,17 @@
 {
   "version": 2,
-  "buildCommand": "npm run build --workspace=packages/types && npm run build",
-  "outputDirectory": "apps/web/dist/@fakeintellect/web",
+  "buildCommand": "npm run build --workspace=packages/types && npm run build --workspace=apps/web",
+  "outputDirectory": "apps/web/dist/web/browser",
   "installCommand": "npm install",
   "framework": null,
-  "functions": {
-    "apps/api/api/index.ts": {
-      "runtime": "@vercel/node@3",
-      "maxDuration": 30,
-      "memory": 512
-    }
-  },
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "/apps/api/api/index"
+      "destination": "/api"
     },
     {
       "source": "/health",
-      "destination": "/apps/api/api/index"
+      "destination": "/api"
     },
     {
       "source": "/((?!_next|favicon|assets|.*\\..*).*)",
@@ -26,12 +19,6 @@
     }
   ],
   "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        { "key": "Access-Control-Allow-Credentials", "value": "true" }
-      ]
-    },
     {
       "source": "/(.*\\.js|.*\\.css|.*\\.woff2|.*\\.ico|.*\\.png|.*\\.svg|.*\\.webp)",
       "headers": [
